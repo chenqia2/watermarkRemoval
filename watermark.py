@@ -5,7 +5,7 @@ from skimage import data
 from skimage.io import imread, imsave
 from skimage.transform import rescale, resize, downscale_local_mean
 from skimage.viewer import ImageViewer
-img_name = '0039'
+img_name = '0048'
 small = imread(img_name + ' (1).jpg')
 big = imread(img_name+'.jpg')
 logo = imread('logo.jpg', as_grey=True)
