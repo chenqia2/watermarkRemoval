@@ -1,16 +1,15 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
-from skimage import data
 from skimage.io import imread, imsave
-from skimage.transform import rescale, resize, downscale_local_mean
-from skimage.viewer import ImageViewer
+from skimage.transform import resize
+#from skimage.viewer import ImageViewer
+
 img_name = '0048'
 small = imread(img_name + ' (1).jpg')
 big = imread(img_name+'.jpg')
 logo = imread('logo.jpg', as_grey=True)
 
-logo_resized = resize(logo, (logo_resized.shape[0], logo_resized.shape[1]), mode='reflect')
+logo_resized = resize(logo, (logo.shape[0]//2, logo.shape[1]//2), mode='reflect')
 small_resized = resize(small, (big.shape[0], big.shape[1]), mode='reflect')
 
 small_resized = small_resized * 255
@@ -51,3 +50,6 @@ for i in  range(0,big.shape[0]):
         if mask[i,j].all():
             result[i,j] = small_resized[i,j]
 imsave(img_name+'result.jpg',result)
+
+#viewer = ImageViewer(result)
+#viewer.show()
