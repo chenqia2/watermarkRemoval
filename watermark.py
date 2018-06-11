@@ -1,12 +1,16 @@
+#!/usr/bin/env python
 import numpy as np
+import urllib
 
 from skimage.io import imread, imsave
 from skimage.transform import resize
 #from skimage.viewer import ImageViewer
 
-img_name = '0048'
-small = imread(img_name + ' (1).jpg')
-big = imread(img_name+'.jpg')
+small_img_name = 'small.jpg'
+img_name = 'img.jpg'
+
+small = imread(small_img_name)
+big = imread(img_name)
 logo = imread('logo.jpg', as_grey=True)
 
 logo_resized = resize(logo, (logo.shape[0]//2, logo.shape[1]//2), mode='reflect')
@@ -49,7 +53,7 @@ for i in  range(0,big.shape[0]):
     for j in  range(0,big.shape[1]):
         if mask[i,j].all():
             result[i,j] = small_resized[i,j]
-imsave(img_name+'result.jpg',result)
+imsave('result.jpg',result)
 
 #viewer = ImageViewer(result)
 #viewer.show()
